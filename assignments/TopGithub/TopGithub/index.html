@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html ng-app="TopGithub">
+<head>
+    <title>TopGit</title>
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css" media="screen,projection" />
+
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+    <div id="container" ng-controller="homeController">
+
+
+        <div class="gitNavBar">
+
+
+            <div class="pagewidth">
+                    <i class="fa fa-github fa-4x" aria-hidden="true" style="color: #666666"></i>
+                    <span class="logo-text">TopGit</span> - <a href="http://www.chin2km.com" target="_blank">finding the best github projects!</a> 
+            </div>
+
+
+        </div>
+
+        <div class="pagewidth">
+            <div class="content">
+
+                <div class="search-bar">
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col s10">
+                                <i class="material-icons prefix">search</i>
+                                <input id="icon_prefix" class="input-search" list="testList" type="" placeholder="Search by languages" ng-model="query" ng-change="searchNow()" ng-keypress="searchNow($event)">
+                                
+                                <datalist id="testList">
+                                    <option ng-repeat="l in languages" value="{{l}}" >
+                                </datalist>
+
+                            </div>
+                            <div class="col s2">
+                                <i class="material-icons view-type" ng-class="{'active':viewType=='list'}" ng-click="setView('list')">view_list</i>
+                                <i class="material-icons view-type" ng-class="{'active':viewType=='grid'}" ng-click="setView('grid')">view_module</i>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+                <div class="filters-bar">
+                    <h5><i class="material-icons">line_weight</i>Rate Limit</h5>
+                    <form class="rate-limit">
+                        <span>{{q_limit-q_remaining}}</span>
+                        <div class="progress">
+                            <div class="determinate" ng-style="{ width: getLimit() }"></div>
+                        </div>
+                        <span>{{q_limit}}</span>
+                    </form>
+                    <div class="clearFix"></div>
+                    <h5><i class="material-icons">star_rate</i>Stars</h5>
+                    <form id="starRanger">
+                        <p class="range-field">
+                            <span>100</span><input type="range" min="100" max="1000" ng-model="stars" ng-mouseup="search()" /><span>1000</span>
+                        </p>
+                    </form>
+                </div>
+
+                <h5 ng-if="resultsData">We've found {{resultsData.total_count}} results</h5>
+                <h5 ng-if="resultsData.total_count==0">No results found!</h5>
+
+                <div class="results-container">
+
+                    
+                    <div class="row search-results">
+                        <div ng-repeat="result in resultsData.items" class="result" ng-class="viewType">
+                            <h5>
+                                {{result.full_name}}<a class="opener" href="{{result.html_url}}" target="_blank"><i class="material-icons">call_made</i></a>
+                            </h5>
+                            <span><i>Language: <b>{{result.language}}</b></i></span> <b>|</b>
+                            <span><i>{{result.description}}</i></span>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="clearFix"></div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <footer>
+            <div class="pagewidth">
+                <div class="footer-about-me">
+                    <h6>About me</h6>
+                    <h5>
+                        Hello World!, my name is Chintu! Read more about me <a href="http://www.chin2km.com" target="_blank">here</a>
+                        <br /><br />
+                    </h5>
+                </div>
+            </div>
+        </footer>
+        <div class="loader-container" ng-if="isLoading">
+            <div class="preloader-wrapper big active">
+                <div class="spinner-layer spinner-blue-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div><div class="gap-patch">
+                        <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+
+    <script src="main.js"></script>
+    <link href="css.css" rel="stylesheet" />
+</body>
+</html>
