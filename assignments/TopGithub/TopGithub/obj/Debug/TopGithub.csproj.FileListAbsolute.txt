@@ -1,5 +1,0 @@
-c:\users\chintu_k\documents\visual studio 2013\Projects\TopGithub\TopGithub\bin\TopGithub.dll
-c:\users\chintu_k\documents\visual studio 2013\Projects\TopGithub\TopGithub\bin\TopGithub.pdb
-c:\users\chintu_k\documents\visual studio 2013\Projects\TopGithub\TopGithub\obj\Debug\TopGithub.csprojResolveAssemblyReference.cache
-c:\users\chintu_k\documents\visual studio 2013\Projects\TopGithub\TopGithub\obj\Debug\TopGithub.dll
-c:\users\chintu_k\documents\visual studio 2013\Projects\TopGithub\TopGithub\obj\Debug\TopGithub.pdb
